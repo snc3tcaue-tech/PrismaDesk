@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PrismaDesk - Clientes</title>
+
+<link rel="stylesheet" href="../css/chamados.css">
+
+</head>
+<body>
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <h2>PrismaDesk</h2>
+        <span>Painel Administrativo</span>
+    </div>
+
+    <nav class="menu">
+
+        <a href="dashboard.html">Dashboard</a>
+        <a href="admin-clientes.html" class="active">Clientes</a>
+        <a href="chamados.html">Chamados</a>
+        <a href="tecnicos.html">Técnicos</a>
+
+    </nav>
+
+    <div class="bottom-menu">
+        <a href="login.html">Sair</a>
+    </div>
+
+</aside>
+
+<main class="content">
+
+    <header class="topbar">
+
+        <div>
+            <h1>Clientes</h1>
+            <p id="total-clientes"></p>
+        </div>
+
+    </header>
+
+    <section
+        id="lista-clientes"
+        class="cards">
+    </section>
+
+</main>
+
+<script src="../js/api.js"></script>
+<script src="../js/admin-clientes.js"></script>
+
+</body>
+</html>

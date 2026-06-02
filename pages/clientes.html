@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>PrismaDesk - Usuário</title>
+
+<link rel="stylesheet" href="../css/chamados.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>PrismaDesk</h2>
+            <h1>Meus Chamados e Histórico</h1>
+            <span>Painel do Usuário</span>
+
+        </div>
+
+        <nav class="menu">
+
+
+           <a href="clientes.html">
+             Meus Chamados
+            </a>
+
+            <a href="abrirChamado.html">
+                Abrir Chamado
+            </a>
+
+            <a href="clientes.html">
+                Histórico
+            </a>
+
+            <a href="#">
+                Perfil
+            </a>
+
+        </nav>
+
+        <div class="bottom-menu">
+
+            <a href="login.html">
+                Sair
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="content">
+
+        <!-- TOPO -->
+        <header class="topbar">
+
+            <div>
+
+                <h1>Meus Chamados</h1>
+               <p id="total-chamados"></p>
+
+            </div>
+
+            <div class="top-actions">
+
+                <input
+                    type="text"
+                    placeholder="Buscar chamado..."
+                >
+
+                <button onclick="window.location.href='abrirChamado.html'">
+                    Novo Chamado
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- CARDS -->
+        <section id="lista-chamados" class="cards">
+
+        </section>
+
+    </main>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/clientes.js"></script>
+
+</body>
+</html>

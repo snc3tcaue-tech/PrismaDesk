@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>PrismaDesk</title>
+
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="/frontend/css/login.css">
+
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+
+        <!-- LADO ESQUERDO -->
+        <div class="login-info">
+
+            <h1>PrismaDesk</h1>
+
+            <p>
+                Sistema profissional de gerenciamento
+                de chamados técnicos e ordens de serviço.
+            </p>
+
+            <div class="status-box">
+
+                <span>✔ Gestão de Chamados</span>
+                <span>✔ Controle de Técnicos</span>
+                <span>✔ Histórico Completo</span>
+
+            </div>
+
+        </div>
+
+        <!-- FORMULÁRIOS -->
+        <div class="form-area">
+
+            <!-- LOGIN -->
+            <div id="loginForm" class="form-container">
+
+                <h2>Entrar</h2>
+
+                <p class="subtitle">
+                    Acesse sua conta
+                </p>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Digite seu e-mail"
+                >
+
+                <input
+                    type="password"
+                    id="loginSenha"
+                    placeholder="Digite sua senha"
+                >
+
+                <button onclick="login()">
+                    Entrar
+                </button>
+
+                <p class="switch-text">
+                    Não possui conta?
+
+                    <span onclick="mostrarCadastro()">
+                        Criar conta
+                    </span>
+                </p>
+
+            </div>
+
+            <!-- CADASTRO -->
+            <div id="cadastroForm"
+                 class="form-container hidden">
+
+                <h2>Criar Conta</h2>
+
+                <p class="subtitle">
+                    Cadastre-se no sistema
+                </p>
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Nome completo"
+                >
+
+                <input
+                    type="text"
+                    id="telefone"
+                    placeholder="Telefone"
+                >
+
+                <input
+                    type="email"
+                    id="cadastroEmail"
+                    placeholder="Digite seu e-mail"
+                >
+
+                <input
+                    type="password"
+                    id="cadastroSenha"
+                    placeholder="Crie uma senha"
+                >
+
+                <button onclick="cadastrar()">
+                    Cadastrar
+                </button>
+
+                <p class="switch-text">
+                    Já possui conta?
+
+                    <span onclick="mostrarLogin()">
+                        Fazer login
+                    </span>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../js/auth.js"></script>
+
+</body>
+</html>

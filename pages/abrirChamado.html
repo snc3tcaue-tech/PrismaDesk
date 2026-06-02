@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Abrir Chamado</title>
+
+<link rel="stylesheet" href="../css/chamados.css">
+
+</head>
+<body>
+
+<main class="content">
+
+    <header class="topbar">
+
+        <div>
+            <h1>Abrir Chamado</h1>
+        </div>
+
+    </header>
+
+    <div class="card">
+
+        <h3>Categoria</h3>
+
+<select id="categoria">
+
+    <option value="hardware">Hardware</option>
+    <option value="software">Software</option>
+    <option value="redes">Redes</option>
+    <option value="impressoras">Impressoras</option>
+    <option value="servidores">Servidores</option>
+    <option value="suporte">Suporte</option>
+
+</select>
+
+<br><br>
+
+<h3>Prioridade</h3>
+
+<select id="prioridade">
+
+    <option value="alta">Alta</option>
+    <option value="média">Média</option>
+    <option value="baixa">Baixa</option>
+
+</select>
+
+<br><br>
+
+<h3>Título do Problema</h3>
+
+<input
+    id="titulo"
+    type="text"
+    placeholder="Ex: Computador não liga"
+>
+
+<br><br>
+
+<h3>Descrição</h3>
+
+<textarea
+    id="descricao"
+    placeholder="Descreva detalhadamente o problema"
+></textarea>
+
+        <button onclick="abrirChamado()">
+            Criar Chamado
+        </button>
+
+    </div>
+
+</main>
+
+<script src="../js/api.js"></script>
+<script src="../js/abrirChamado.js"></script>
+
+</body>
+</html>

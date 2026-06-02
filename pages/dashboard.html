@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrismaDesk - Dashboard</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="../js/dashboard.js"></script>
+</head>
+
+<body>
+
+    <main class="content">
+
+        <header class="dashboard-header">
+            <h1>Dashboard PrismaDesk</h1>
+            <p>Visão geral do sistema de Ordem de Serviço</p>
+        </header>
+
+        <section class="cards">
+
+            <div class="card">
+                <h3>Chamados Abertos</h3>
+                <span id="chamados-abertos">0</span>
+            </div>
+
+            <div class="card">
+                <h3>Chamados Fechados</h3>
+                <span id="chamados-fechados">0</span>
+            </div>
+
+            <div class="card">
+                <h3>Clientes</h3>
+                <span id="clientes-total">0</span>
+            </div>
+
+            <div class="card">
+                <h3>Técnicos</h3>
+                <span id="tecnicos-total">0</span>
+            </div>
+
+        </section>
+
+        <section class="graficos">
+
+            <div class="grafico-box">
+                <h2>Status dos Chamados</h2>
+                <canvas id="graficoPizza"></canvas>
+            </div>
+
+            <div class="grafico-box">
+                <h2>Categorias</h2>
+                <canvas id="graficoBarras"></canvas>
+            </div>
+
+        </section>
+
+    
+
+    </main>
+
+</body>
+
+</html>
