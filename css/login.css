@@ -1,0 +1,174 @@
+LOGIN.CSS
+.login-body{
+    background: #050816;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+}
+
+/* CONTAINER */
+
+.login-container{
+    width: 1000px;
+    height: 600px;
+
+    background: #0c1127;
+
+    border: 1px solid #344480;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+/* LADO ESQUERDO */
+
+.login-info{
+    flex: 1;
+
+    background: linear-gradient(
+        135deg,
+        #6c4cff,
+        #3b82f6
+    );
+
+    padding: 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-info h1{
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.login-info p{
+    font-size: 18px;
+    line-height: 1.6;
+
+    margin-bottom: 40px;
+}
+
+.status-box{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.status-box span{
+    background: rgba(255,255,255,0.1);
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    backdrop-filter: blur(10px);
+}
+
+/* FORM */
+
+.form-container{
+    flex: 1;
+
+    padding: 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container h2{
+    font-size: 40px;
+    margin-bottom: 10px;
+
+color: #ffffff;
+}
+
+
+.subtitle{
+    color: #8b8fa3;
+    margin-bottom: 40px;
+}
+
+.form-container input{
+    background: #111827;
+
+    border: 1px solid #1f2937;
+
+    color: white;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin-bottom: 20px;
+
+    font-size: 15px;
+}
+
+.form-container input:focus{
+    outline: none;
+    border-color: #6c4cff;
+}
+
+.form-container button{
+    background: #6c4cff;
+
+    color: white;
+
+    border: none;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.form-container button:hover{
+    opacity: 0.8;
+}
+.form-area{
+    flex: 1;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.hidden{
+    display: none;
+}
+
+.switch-text{
+    margin-top: 20px;
+
+    color: #8b8fa3;
+
+    text-align: center;
+}
+
+.switch-text span{
+    color: #6c4cff;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.switch-text span:hover{
+    text-decoration: underline;
+}
