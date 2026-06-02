@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <title>PrismaDesk - Sistema OS</title>
+
+    <link rel="stylesheet" href="/frontend/css/chamados.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>PrismaDesk</h2>
+            <span>v2.4.1</span>
+        </div>
+
+        <nav class="menu">
+
+            <a href="pages/dashboard.html" class="active">
+                📊 Dashboard
+            </a>
+
+            <a href="pages/chamados.html">
+                🛠 Chamados
+            </a>
+
+            <a href="pages/clientes.html">
+                👤 Clientes
+            </a>
+
+            <a href="pages/tecnicos.html">
+                👨‍🔧 Técnicos
+            </a>
+
+            <a href="pages/status.html">
+                📌 Status
+            </a>
+
+            <a href="pages/historico.html">
+                📜 Histórico
+            </a>
+
+        </nav>
+
+        <div class="bottom-menu">
+
+            <a href="#">
+                ⚙ Configurações
+            </a>
+
+            <a href="pages/login.html">
+                🚪 Sair
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="content">
+
+        <!-- TOPO -->
+        <header class="topbar">
+
+            <div>
+                <h1>Chamados Ativos</h1>
+                <p>5 registros</p>
+            </div>
+
+            <div class="top-actions">
+
+                <input type="text" placeholder="Buscar chamado...">
+
+                <select>
+                    <option>Todos</option>
+                    <option>Aberto</option>
+                    <option>Em andamento</option>
+                    <option>Fechado</option>
+                </select>
+
+                <button>Novo Chamado</button>
+
+            </div>
+
+        </header>
+
+        <!-- LISTA DE CHAMADOS -->
+        <section id="lista-chamados" class="cards">
+
+</section>
+
+    </main>
+
+
+<script src="js/chamados.js"></script>
+</body>
+</html>
