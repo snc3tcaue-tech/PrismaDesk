@@ -1,0 +1,151 @@
+create database if not exists PrismaDesk;
+use PrismaDesk;
+
+create table clientes (
+id_cliente int primary key not null auto_increment,
+nome varchar (60) not null,
+telefone varchar (20),
+email varchar (50) not null unique,
+senha varchar (255) not null,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ON UPDATE CURRENT_TIMESTAMP
+);
+insert into clientes (nome, telefone, email, senha) values
+('Ana Souza','81990000001','ana1@email.com','123'),
+('Bruno Lima','81990000002','bruno2@email.com','123'),
+('Carla Mendes','81990000003','carla3@email.com','123'),
+('Daniel Alves','81990000004','daniel4@email.com','123'),
+('Eduardo Silva','81990000005','edu5@email.com','123'),
+('Fernanda Rocha','81990000006','fer6@email.com','123'),
+('Gabriel Santos','81990000007','gab7@email.com','123'),
+('Helena Costa','81990000008','hel8@email.com','123'),
+('Igor Martins','81990000009','igor9@email.com','123'),
+('Juliana Pereira','81990000010','ju10@email.com','123'),
+('Lucas Oliveira','81990000011','luc11@email.com','123'),
+('Mariana Lima','81990000012','mar12@email.com','123');
+
+create table tecnicos (
+id_tecnico int primary key not null auto_increment,
+nome_tec varchar (60) not null
+);
+insert into tecnicos (nome_tec) values
+('Rafael Torres'),
+('Paulo Henrique'),
+('Camila Nunes'),
+('Thiago Souza'),
+('Bruno Ferreira'),
+('Aline Costa'),
+('Marcelo Dias'),
+('Patrícia Gomes'),
+('Rodrigo Alves'),
+('Julio César'),
+('Vanessa Lima'),
+('Carlos Eduardo');
+
+create table especialidades (
+id_especialidade int primary key not null auto_increment,
+nome varchar(50) not null unique
+);
+insert into especialidades (nome) values
+('hardware'), ('impressoras'),
+('software'), ('redes'),
+('servidores'), ('suporte');
+
+create table tec_especialidade (
+id_tecnico int,
+id_especialidade int,
+primary key (id_tecnico, id_especialidade),
+foreign key (id_tecnico) references tecnicos(id_tecnico) on delete cascade,
+foreign key (id_especialidade) references especialidades(id_especialidade) on delete cascade
+);
+insert into tec_especialidade values
+(1,1),
+(1,3),
+(2,2),
+(3,4),
+(4,1),
+(5,5),
+(6,6),
+(7,3),
+(8,2),
+(9,4),
+(10,1),
+(11,6);
+
+create table chamados (
+id_chamado int primary key not null auto_increment,
+
+id_cliente int not null,
+id_tecnico int,
+
+categoria enum ('hardware','impressoras',
+'software','redes',
+'servidores','suporte'),
+prioridade enum ('alta','média','baixa'),
+titulo varchar (50),
+descricao varchar (255),
+status_chamado enum ('aberto','em andamento','fechado'),
+
+data_abertura timestamp default current_timestamp, 
+data_fechamento timestamp null,
+
+foreign key (id_cliente) references clientes(id_cliente) on delete cascade,
+foreign key (id_tecnico) references tecnicos(id_tecnico) on delete set null
+);
+insert into chamados
+(id_cliente,id_tecnico,categoria,prioridade,titulo,descricao,status_chamado)
+values
+(1,1,'hardware','alta','PC não liga','Computador não liga','aberto'),
+(2,2,'impressoras','média','Impressora travada','Não imprime','em andamento'),
+(3,3,'redes','baixa','Internet lenta','Queda de conexão','aberto'),
+(4,4,'hardware','alta','HD com problema','Ruídos no HD','fechado'),
+(5,5,'servidores','média','Servidor offline','Servidor não responde','em andamento'),
+(6,6,'suporte','baixa','Senha esquecida','Reset de senha','fechado'),
+(7,7,'software','média','Erro sistema','Sistema não abre','aberto'),
+(8,8,'impressoras','baixa','Folha presa','Papel atolado','fechado'),
+(9,9,'redes','alta','Sem internet','Sem acesso rede','em andamento'),
+(10,10,'hardware','média','Teclado falhando','Teclas não funcionam','aberto'),
+(11,11,'suporte','baixa','Conta bloqueada','Acesso bloqueado','fechado');
+
+create table historico_chamados (
+id_historico int auto_increment primary key,
+id_chamado int not null,
+descricao varchar(255),
+data_evento timestamp default current_timestamp,
+
+foreign key (id_chamado) references chamados(id_chamado) on delete cascade
+);
+insert into historico_chamados (id_chamado,descricao) values
+(1,'Chamado criado'),
+(2,'Técnico atribuído'),
+(3,'Chamado aberto pelo cliente'),
+(4,'Problema resolvido'),
+(5,'Servidor em análise'),
+(6,'Senha resetada'),
+(7,'Aguardando diagnóstico'),
+(8,'Papel removido da impressora'),
+(9,'Equipe de rede acionada'),
+(10,'Teclado substituição solicitada'),
+(11,'Conta desbloqueada');
+
+ALTER TABLE clientes
+ADD tipo ENUM('admin','cliente')
+DEFAULT 'cliente';
+
+UPDATE clientes
+SET tipo = 'admin'
+WHERE email = 'ana1@email.com';
+
+INSERT INTO clientes
+(nome, telefone, email, senha)
+VALUES
+(
+'Adm',
+'81999999999',
+'admin@prismadesk.com',
+'123'
+);
+
+SELECT id_cliente, nome, email
+FROM clientes;
