@@ -1,131 +1,47 @@
-let graficoPizza;
-let graficoBarras;
+const dashboard = {
 
-async function carregarDashboard() {
+    chamadosAbertos: 5,
+    chamadosFechados: 12,
+    clientes: 8,
+    tecnicosDisponiveis: 3
+};
 
-    try {
+function carregarDashboard(){
 
-        const response = await fetch(
-            "http://localhost:3000/dashboard"
-        );
+    const container =
+        document.getElementById("dashboard");
 
-        const data = await response.json();
+    container.innerHTML = `
 
-        document.getElementById(
-            "chamados-abertos"
-        ).textContent = data.chamadosAbertos;
+        <div class="card">
 
-        document.getElementById(
-            "chamados-fechados"
-        ).textContent = data.chamadosFechados;
+            <h3>Chamados Abertos</h3>
+            <p>${dashboard.chamadosAbertos}</p>
 
-        document.getElementById(
-            "clientes-total"
-        ).textContent = data.clientes;
+        </div>
 
-        document.getElementById(
-            "tecnicos-total"
-        ).textContent = data.tecnicos;
+        <div class="card">
 
-        renderizarGraficoPizza(data.status);
-        renderizarGraficoBarras(data.categorias);
+            <h3>Chamados Fechados</h3>
+            <p>${dashboard.chamadosFechados}</p>
 
-    } catch (erro) {
+        </div>
 
-        console.error(
-            "Erro ao carregar dashboard:",
-            erro
-        );
-    }
+        <div class="card">
+
+            <h3>Clientes</h3>
+            <p>${dashboard.clientes}</p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Técnicos Disponíveis</h3>
+            <p>${dashboard.tecnicosDisponiveis}</p>
+
+        </div>
+
+    `;
 }
 
-function renderizarGraficoPizza(status) {
-
-    if (graficoPizza) {
-        graficoPizza.destroy();
-    }
-
-    const ctx = document
-        .getElementById("graficoPizza")
-        .getContext("2d");
-
-    graficoPizza = new Chart(ctx, {
-
-        type: "doughnut",
-
-        data: {
-
-            labels: [
-                "Abertos",
-                "Em andamento",
-                "Fechados"
-            ],
-
-            datasets: [{
-                data: [
-                    status.aberto || 0,
-                    status.emAndamento || 0,
-                    status.fechado || 0
-                ]
-            }]
-        },
-
-        options: {
-            responsive: true,
-            maintainAspectRatio: false
-        }
-
-    });
-}
-
-function renderizarGraficoBarras(categorias) {
-
-    if (graficoBarras) {
-        graficoBarras.destroy();
-    }
-
-    const ctx = document
-        .getElementById("graficoBarras")
-        .getContext("2d");
-
-    graficoBarras = new Chart(ctx, {
-
-        type: "bar",
-
-        data: {
-
-            labels: [
-                "Hardware",
-                "Software",
-                "Redes",
-                "Impressoras",
-                "Servidores",
-                "Suporte"
-            ],
-
-            datasets: [{
-                label: "Categorias",
-
-                data: [
-                    categorias.hardware || 0,
-                    categorias.software || 0,
-                    categorias.redes || 0,
-                    categorias.impressoras || 0,
-                    categorias.servidores || 0,
-                    categorias.suporte || 0
-                ]
-            }]
-        },
-
-        options: {
-            responsive: true,
-            maintainAspectRatio: false
-        }
-
-    });
-}
-
-document.addEventListener(
-    "DOMContentLoaded",
-    carregarDashboard
-);
+carregarDashboard();
