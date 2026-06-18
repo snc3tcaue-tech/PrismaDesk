@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +8,7 @@
     <link rel="stylesheet" href="../css/dashboard.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script defer src="../js/dashboard.js"></script>
 </head>
-
 <body>
 
     <main class="content">
@@ -21,27 +18,38 @@
             <p>Visão geral do sistema de Ordem de Serviço</p>
         </header>
 
+<nav class="menu">
+
+        <a href="dashboard.html">Dashboard</a>
+        <a href="admin-clientes.html" class="active">Clientes</a>
+        <a href="chamados.html">Chamados</a>
+        <a href="tecnicos.html">Técnicos</a>
+
+    </nav>
+
+    <div class="bottom-menu">
+
         <section class="cards">
 
             <div class="card">
-                <h3>Chamados Abertos</h3>
-                <span id="chamados-abertos">0</span>
-            </div>
+    <h3>Chamados Abertos</h3>
+    <span id="chamadosAbertos">0</span>
+        </div>
 
-            <div class="card">
-                <h3>Chamados Fechados</h3>
-                <span id="chamados-fechados">0</span>
-            </div>
+        <div class="card">
+    <h3>Chamados Fechados</h3>
+    <span id="chamadosFechados">0</span>
+        </div>
 
-            <div class="card">
-                <h3>Clientes</h3>
-                <span id="clientes-total">0</span>
-            </div>
+        <div class="card">
+     <h3>Clientes</h3>
+    <span id="clientes">0</span>
+        </div>
 
-            <div class="card">
-                <h3>Técnicos</h3>
-                <span id="tecnicos-total">0</span>
-            </div>
+        <div class="card">
+    <h3>Técnicos</h3>
+    <span id="tecnicos">0</span>
+        </div>
 
         </section>
 
@@ -49,20 +57,82 @@
 
             <div class="grafico-box">
                 <h2>Status dos Chamados</h2>
-                <canvas id="graficoPizza"></canvas>
+                <canvas id="graficoStatus"></canvas>
             </div>
 
             <div class="grafico-box">
                 <h2>Categorias</h2>
-                <canvas id="graficoBarras"></canvas>
+                <canvas id="graficoCategoria"></canvas>
             </div>
 
         </section>
 
-    
+        <section class="tabelas">
+
+            <div class="tabela-box">
+
+                <h2>Últimos Chamados</h2>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Cliente</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>#001</td>
+                            <td>PC não liga</td>
+                            <td>Ana Souza</td>
+                            <td>Aberto</td>
+                        </tr>
+
+                        <tr>
+                            <td>#002</td>
+                            <td>Internet lenta</td>
+                            <td>Bruno Lima</td>
+                            <td>Em andamento</td>
+                        </tr>
+
+                        <tr>
+                            <td>#003</td>
+                            <td>Erro sistema</td>
+                            <td>Carla Mendes</td>
+                            <td>Fechado</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="atividade-box">
+
+                <h2>Atividades Recentes</h2>
+
+                <ul>
+
+                    <li>Chamado #001 criado</li>
+                    <li>Técnico Rafael atribuído ao chamado #002</li>
+                    <li>Chamado #003 encerrado</li>
+                    <li>Novo cliente cadastrado</li>
+
+                </ul>
+
+            </div>
+
+        </section>
 
     </main>
 
-</body>
+    <script src="../js/dashboard.js"></script>
 
+</body>
 </html>
