@@ -1,0 +1,216 @@
+configuração.html
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações - Sistema de OS</title>
+  <link rel="stylesheet" href="../css/configuracoes.css">
+  <!-- Link do Font Awesome para os ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <div class="config-container">
+    <h2>Configurações do Sistema</h2>
+    <p class="subtitle">Gerencie os dados da sua empresa, equipe, permissões e segurança</p>
+
+    <!-- Navegação por Abas -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-emitente">Dados da Empresa (Emitente)</button>
+      <button class="tab-btn" data-tab="tab-usuarios">Usuários</button>
+      <button class="tab-btn" data-tab="tab-permissoes">Perfis e Permissões</button>
+      <button class="tab-btn" data-tab="tab-backup">Backup do Sistema</button>
+    </nav>
+
+    <form id="form-config">
+      
+      <!-- ABA 1: Dados do Emitente -->
+      <section id="tab-emitente" class="tab-content active">
+        <h3>Dados para Impressão e Relatórios</h3>
+
+        <div class="logo-upload-box">
+          <div class="logo-preview" id="logo-preview">
+            <span>Sua Logo Aqui</span>
+          </div>
+          <div>
+            <label for="logo-file" class="btn btn-secondary">Alterar Logomarca</label>
+            <input type="file" id="logo-file" accept="image/*" style="display:none;">
+            <small>Tamanho recomendado: 300x100px (PNG ou JPG)</small>
+          </div>
+        </div>
+
+        <!-- ENTRARAM AQUI: Inputs limpos com placeholder para receber via JS/Backend -->
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="company-name">Razão Social / Nome Fantasia *</label>
+            <input type="text" id="company-name" required placeholder="Razão Social">
+          </div>
+          <div class="form-group">
+            <label for="company-cnpj">CNPJ / CPF *</label>
+            <input type="text" id="company-cnpj" required placeholder="00.000.000/0000-00">
+          </div>
+          <div class="form-group">
+            <label for="company-ie">Inscrição Estadual / RG</label>
+            <input type="text" id="company-ie" placeholder="Inscrição Estadual">
+          </div>
+          <div class="form-group">
+            <label for="company-phone">Telefone / Celular *</label>
+            <input type="text" id="company-phone" required placeholder="(00) 00000-0000">
+          </div>
+          <div class="form-group">
+            <label for="company-email">E-mail de Contato *</label>
+            <input type="email" id="company-email" required placeholder="email@empresa.com">
+          </div>
+          <div class="form-group">
+            <label for="company-cep">CEP</label>
+            <input type="text" id="company-cep" placeholder="00000-000">
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group span-2">
+            <label for="company-address">Endereço (Rua/Avenida, Nº)</label>
+            <input type="text" id="company-address" placeholder="Rua, Nº, Bairro">
+          </div>
+          <div class="form-group">
+            <label for="company-city">Cidade / UF</label>
+            <input type="text" id="company-city" placeholder="Cidade / UF">
+          </div>
+        </div>
+      </section>
+
+      <!-- ABA 2: Usuários -->
+      <section id="tab-usuarios" class="tab-content">
+        <div class="section-header">
+          <h3>Usuários Cadastrados</h3>
+          <button type="button" class="btn btn-secondary" id="btn-add-user">+ Novo Usuário</button>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Perfil</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <!-- ENTROU AQUI: Tbody limpo para ser preenchido pela API -->
+          <tbody id="user-table-body">
+            <!-- Será preenchido dinamicamente pelo JS -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ABA 3: Permissões de Acesso -->
+      <section id="tab-permissoes" class="tab-content">
+        <h3>Matriz de Permissões por Perfil</h3>
+        
+        <div class="form-group">
+          <label for="select-role">Selecione o Perfil para Configurar:</label>
+          <select id="select-role">
+            <option value="vendedor">Vendedor</option>
+            <option value="tecnico">Técnico</option>
+            <option value="recepcao">Recepção</option>
+          </select>
+        </div>
+
+        <table class="data-table permissions-table">
+          <thead>
+            <tr>
+              <th>Módulo / Funcionalidade</th>
+              <th>Visualizar</th>
+              <th>Adicionar</th>
+              <th>Editar</th>
+              <th>Excluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Clientes</td>
+              <td><input type="checkbox" checked></td>
+              <td><input type="checkbox" checked></td>
+              <td><input type="checkbox" checked></td>
+              <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+              <td>Produtos e Estoque</td>
+              <td><input type="checkbox" checked></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+              <td>Serviços</td>
+              <td><input type="checkbox" checked></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+              <td>Ordens de Serviço (OS)</td>
+              <td><input type="checkbox" checked></td>
+              <td><input type="checkbox" checked></td>
+              <td><input type="checkbox" checked></td>
+              <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+              <td>Vendas</td>
+              <td><input type="checkbox" checked></td>
+              <td><input type="checkbox" checked></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+              <td>Financeiro / Lançamentos</td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+              <td>Configurações / Emitente</td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+              <td>Backup do Banco de Dados</td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+              <td><input type="checkbox"></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ABA 4: Backup -->
+      <section id="tab-backup" class="tab-content">
+        <h3>Backup e Segurança dos Dados</h3>
+        <p class="subtitle">Gere e baixe uma cópia de segurança do banco de dados do seu sistema.</p>
+
+        <div class="backup-box">
+          <div class="backup-info">
+            <strong>Último backup realizado:</strong>
+            <span>17/03/2026 às 14:30</span>
+          </div>
+          <button type="button" class="btn btn-secondary" id="btn-generate-backup">💾 Gerar Novo Backup (.sql)</button>
+        </div>
+      </section>
+
+      <!-- Ações globais -->
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script src="../js/configuracoes.js"></script>
+</body>
+</html>
