@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatórios - PrismaDesk</title>
+  <link rel="stylesheet" href="../css/relatorios.css">
+</head>
+<body>
+
+  <div class="config-container">
+    <div class="section-header">
+      <div>
+        <h2>Relatórios do Sistema</h2>
+        <p class="subtitle">Gere relatórios operacionais e financeiros detalhados</p>
+      </div>
+      <button type="button" id="btn-print" class="btn btn-secondary" onclick="window.print()">🖨️ Imprimir / Exportar PDF</button>
+    </div>
+
+    <!-- Navegação por Tipos de Relatórios -->
+    <nav class="tabs-nav no-print">
+      <button class="tab-btn active" data-tab="tab-os">Ordens de Serviço</button>
+      <button class="tab-btn" data-tab="tab-chamados">Chamados</button>
+      <button class="tab-btn" data-tab="tab-financeiro">Financeiro</button>
+      <button class="tab-btn" data-tab="tab-clientes">Clientes</button>
+    </nav>
+
+    <!-- ABA 1: Relatório de OS -->
+    <section id="tab-os" class="tab-content active">
+      <!-- Filtros -->
+      <div class="filter-card no-print">
+        <h3>Filtros do Relatório de OS</h3>
+        <form id="form-filter-os" class="form-grid">
+          <div class="form-group">
+            <label for="os-date-start">Data Inicial</label>
+            <input type="date" id="os-date-start" value="2026-07-01">
+          </div>
+          <div class="form-group">
+            <label for="os-date-end">Data Final</label>
+            <input type="date" id="os-date-end" value="2026-07-31">
+          </div>
+          <div class="form-group">
+            <label for="os-status">Status da OS</label>
+            <select id="os-status">
+              <option value="todos">Todos os Status</option>
+              <option value="analise">Em Análise</option>
+              <option value="andamento">Em Andamento</option>
+              <option value="finalizada">Finalizada</option>
+              <option value="cancelada">Cancelada</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="os-tech">Técnico Responsável</label>
+            <select id="os-tech">
+              <option value="todos">Todos os Técnicos</option>
+              <option value="1">Administrador</option>
+              <option value="2">João Técnico</option>
+              <option value="3">Maria Técnica</option>
+            </select>
+          </div>
+          <div class="form-group span-2 flex-end">
+            <button type="submit" class="btn btn-primary">Gerar Relatório</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Resumo de Indicadores (KPIs) -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-title">OS Registradas</span>
+          <span class="kpi-value" id="kpi-total-os">12</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">OS Finalizadas</span>
+          <span class="kpi-value status-green" id="kpi-completed-os">8</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Em Aberto / Andamento</span>
+          <span class="kpi-value status-blue" id="kpi-pending-os">4</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Receita do Período</span>
+          <span class="kpi-value" id="kpi-total-amount">R$ 4.250,00</span>
+        </div>
+      </div>
+
+      <!-- Tabela de Resultados para Impressão/Visualização -->
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Nº OS</th>
+            <th>Cliente</th>
+            <th>Data</th>
+            <th>Técnico</th>
+            <th>Status</th>
+            <th class="text-right">Valor Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>OS-0001-26</td>
+            <td>Ana Souza</td>
+            <td>05/07/2026</td>
+            <td>Administrador</td>
+            <td><span class="badge badge-success">Finalizada</span></td>
+            <td class="text-right">R$ 270,00</td>
+          </tr>
+          <tr>
+            <td>OS-0002-26</td>
+            <td>Lucas Ferreira</td>
+            <td>10/07/2026</td>
+            <td>João Técnico</td>
+            <td><span class="badge badge-info">Em Andamento</span></td>
+            <td class="text-right">R$ 450,00</td>
+          </tr>
+          <tr>
+            <td>OS-0003-26</td>
+            <td>Empresa Alfa</td>
+            <td>15/07/2026</td>
+            <td>Maria Técnica</td>
+            <td><span class="badge badge-success">Finalizada</span></td>
+            <td class="text-right">R$ 1.500,00</td>
+          </tr>
+          <tr>
+            <td>OS-0004-26</td>
+            <td>Juliana Lima</td>
+            <td>20/07/2026</td>
+            <td>João Técnico</td>
+            <td><span class="badge badge-warning">Em Análise</span></td>
+            <td class="text-right">R$ 180,00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="table-total">
+            <td colspan="5"><strong>TOTAL GERAL</strong></td>
+            <td class="text-right"><strong>R$ 2.400,00</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- ABA 2: Chamados -->
+    <section id="tab-chamados" class="tab-content">
+      <div class="filter-card no-print">
+        <h3>Filtros do Relatório de Chamados</h3>
+        <form class="form-grid">
+          <div class="form-group">
+            <label>Data Inicial</label>
+            <input type="date" value="2026-07-01">
+          </div>
+          <div class="form-group">
+            <label>Data Final</label>
+            <input type="date" value="2026-07-31">
+          </div>
+          <div class="form-group">
+            <label>Status do Chamado</label>
+            <select>
+              <option value="todos">Todos</option>
+              <option value="aberto">Chamados Abertos</option>
+              <option value="analise">Em Análise</option>
+              <option value="andamento">Em Andamento</option>
+            </select>
+          </div>
+          <div class="form-group flex-end">
+            <button type="submit" class="btn btn-primary">Filtrar Chamados</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-title">Chamados Abertos</span>
+          <span class="kpi-value status-blue">15</span>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Nº Chamado</th>
+            <th>Data</th>
+            <th>Cliente</th>
+            <th>Assunto / Problema Relatado</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CH-0112</td>
+            <td>17/07/2026</td>
+            <td>Lucas Ferreira</td>
+            <td>Computador não liga</td>
+            <td><span class="badge badge-info">Em Andamento</span></td>
+          </tr>
+          <tr>
+            <td>CH-0113</td>
+            <td>18/07/2026</td>
+            <td>Ana Souza</td>
+            <td>Lentidão no sistema</td>
+            <td><span class="badge badge-warning">Em Análise</span></td>
+          </tr>
+          <tr>
+            <td>CH-0114</td>
+            <td>19/07/2026</td>
+            <td>Empresa Alfa</td>
+            <td>Troca de SSD</td>
+            <td><span class="badge badge-info">Em Andamento</span></td>
+          </tr>
+          <tr>
+            <td>CH-0115</td>
+            <td>20/07/2026</td>
+            <td>Juliana Lima</td>
+            <td>Limpeza preventiva</td>
+            <td><span class="badge badge-success">Finalizada</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ABA 3: Financeiro -->
+    <section id="tab-financeiro" class="tab-content">
+      <div class="filter-card no-print">
+        <h3>Relatório Financeiro (Receitas e Despesas)</h3>
+        <form class="form-grid">
+          <div class="form-group">
+            <label>Período</label>
+            <input type="month" value="2026-07">
+          </div>
+          <div class="form-group">
+            <label>Tipo de Lançamento</label>
+            <select>
+              <option>Todos (Receitas e Despesas)</option>
+              <option>Apenas Receitas</option>
+              <option>Apenas Despesas</option>
+            </select>
+          </div>
+          <div class="form-group flex-end">
+            <button type="submit" class="btn btn-primary">Gerar Extrato</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-title">Entradas (Receitas)</span>
+          <span class="kpi-value status-green">R$ 5.800,00</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Saídas (Despesas)</span>
+          <span class="kpi-value status-red">R$ 1.200,00</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Saldo Líquido</span>
+          <span class="kpi-value">R$ 4.600,00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA 4: Clientes -->
+    <section id="tab-clientes" class="tab-content">
+      <div class="filter-card no-print">
+        <h3>Relatório de Clientes e Atendimentos</h3>
+        <form class="form-grid">
+          <div class="form-group">
+            <label>Filtrar por Nome</label>
+            <input type="text" placeholder="Buscar cliente...">
+          </div>
+          <div class="form-group flex-end">
+            <button type="submit" class="btn btn-primary">Filtrar Clientes</button>
+          </div>
+        </form>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome do Cliente</th>
+            <th>Total de Chamados</th>
+            <th>OS Finalizadas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CLI-001</td>
+            <td>Ana Souza</td>
+
+            <script src="../js/api.js"></script>
+<script src="../js/relatorios.js"></script>
+
+
+</body>
+</html>
