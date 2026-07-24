@@ -6,10 +6,13 @@
     <title>PrismaDesk - Dashboard</title>
 
     <link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/sidebar.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
+    <aside id="sidebar"></aside>
 
     <main class="content">
 
@@ -18,121 +21,90 @@
             <p>Visão geral do sistema de Ordem de Serviço</p>
         </header>
 
-<nav class="menu">
 
-        <a href="dashboard.html">Dashboard</a>
-        <a href="admin-clientes.html" class="active">Clientes</a>
-        <a href="chamados.html">Chamados</a>
-        <a href="tecnicos.html">Técnicos</a>
 
-    </nav>
+            <section class="cards">
 
-    <div class="bottom-menu">
+                <div class="card">
+                    <h3>Chamados Abertos</h3>
+                    <span id="chamadosAbertos">0</span>
+                </div>
 
-        <section class="cards">
+                <div class="card">
+                    <h3>Chamados Fechados</h3>
+                    <span id="chamadosFechados">0</span>
+                </div>
 
-            <div class="card">
-    <h3>Chamados Abertos</h3>
-    <span id="chamadosAbertos">0</span>
-        </div>
+                <div class="card">
+                    <h3>Clientes</h3>
+                    <span id="clientes">0</span>
+                </div>
 
-        <div class="card">
-    <h3>Chamados Fechados</h3>
-    <span id="chamadosFechados">0</span>
-        </div>
+                <div class="card">
+                    <h3>Técnicos</h3>
+                    <span id="tecnicos">0</span>
+                </div>
 
-        <div class="card">
-     <h3>Clientes</h3>
-    <span id="clientes">0</span>
-        </div>
+            </section>
 
-        <div class="card">
-    <h3>Técnicos</h3>
-    <span id="tecnicos">0</span>
-        </div>
+            <section class="graficos">
 
-        </section>
+                <div class="grafico-box">
+                    <h2>Status dos Chamados</h2>
+                    <canvas id="graficoStatus"></canvas>
+                </div>
 
-        <section class="graficos">
+                <div class="grafico-box">
+                    <h2>Categorias</h2>
+                    <canvas id="graficoCategoria"></canvas>
+                </div>
 
-            <div class="grafico-box">
-                <h2>Status dos Chamados</h2>
-                <canvas id="graficoStatus"></canvas>
-            </div>
+            </section>
 
-            <div class="grafico-box">
-                <h2>Categorias</h2>
-                <canvas id="graficoCategoria"></canvas>
-            </div>
+            <section class="tabelas">
 
-        </section>
+                <div class="tabela-box">
 
-        <section class="tabelas">
+                    <h2>Últimos Chamados</h2>
 
-            <div class="tabela-box">
+                    <table>
 
-                <h2>Últimos Chamados</h2>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Cliente</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
 
-                <table>
+                        <tbody id="ultimosChamados">
+                        </tbody>
 
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Título</th>
-                            <th>Cliente</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
+                    </table>
 
-                    <tbody>
+                </div>
 
-                        <tr>
-                            <td>#001</td>
-                            <td>PC não liga</td>
-                            <td>Ana Souza</td>
-                            <td>Aberto</td>
-                        </tr>
+                <div class="atividade-box">
 
-                        <tr>
-                            <td>#002</td>
-                            <td>Internet lenta</td>
-                            <td>Bruno Lima</td>
-                            <td>Em andamento</td>
-                        </tr>
+                    <h2>Atividades Recentes</h2>
 
-                        <tr>
-                            <td>#003</td>
-                            <td>Erro sistema</td>
-                            <td>Carla Mendes</td>
-                            <td>Fechado</td>
-                        </tr>
+                    <ul id="atividadesRecentes">
 
-                    </tbody>
+                        <li>Dashboard carregado</li>
 
-                </table>
+                    </ul>
 
-            </div>
+                </div>
 
-            <div class="atividade-box">
+            </section>
 
-                <h2>Atividades Recentes</h2>
-
-                <ul>
-
-                    <li>Chamado #001 criado</li>
-                    <li>Técnico Rafael atribuído ao chamado #002</li>
-                    <li>Chamado #003 encerrado</li>
-                    <li>Novo cliente cadastrado</li>
-
-                </ul>
-
-            </div>
-
-        </section>
+       
 
     </main>
 
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/api.js"></script>
     <script src="../js/dashboard.js"></script>
-
 </body>
 </html>
