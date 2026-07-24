@@ -1,54 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Técnicos - PrismaDesk</title>
 
+    <title>
+        Técnicos - PrismaDesk
+    </title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/tecnicos.css">
+
 
 </head>
 
+
 <body>
 
-    <aside class="sidebar">
 
-        <nav class="menu">
+    <aside id="sidebar"></aside>
 
-            <a href="dashboard.html">Dashboard</a>
-            <a href="clientes.html">Clientes</a>
-            <a href="chamados.html">Chamados</a>
-            <a href="tecnicos.html" class="active">Técnicos</a>
 
-        </nav>
 
-    </aside>
 
     <main class="content">
 
+
         <header class="topbar">
 
+
             <div>
-                <h1>Técnicos</h1>
+
+                <h1>
+                    Técnicos
+                </h1>
+
+
                 <p id="total-tecnicos"></p>
+
+
             </div>
 
+
+
             <div class="top-actions">
+
+
                 <button onclick="adicionar()">
-    Novo Técnico
-</button>
+
+                    Novo Técnico
+
+                </button>
+
+
             </div>
+
 
         </header>
 
-        <section id="lista-tecnicos" class="cards"></section>
+
+
+
+        <section id="lista-tecnicos" class="cards">
+
+
+        </section>
+
+
+
 
     </main>
 
+
+
+
+    <script src="../js/sidebar.js"></script>
+
     <script src="../js/api.js"></script>
-<script src="../js/tecnicos.js"></script>
+
+    <script src="../js/tecnicos.js"></script>
+
 
 </body>
+
 </html>
