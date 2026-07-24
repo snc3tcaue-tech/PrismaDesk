@@ -1,63 +1,100 @@
-async function abrirChamado() {
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
 
-    const categoria =
-        document.getElementById("categoria").value;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    const prioridade =
-        document.getElementById("prioridade").value;
+<title>Abrir Chamado</title>
 
-    const titulo =
-        document.getElementById("titulo").value;
+<link rel="stylesheet" href="../css/chamados.css">
+<link rel="stylesheet" href="../css/sidebar.css">
 
-    const descricao =
-        document.getElementById("descricao").value;
+</head>
+<body>
 
-    try {
+     <aside id="sidebar"></aside>
 
-        const res = await fetch(
-            `${API_URL}/chamados`,
-            {
-                method: "POST",
+    <main class="content">
 
-                headers: {
-                    ...getHeaders(),
-                    "Content-Type": "application/json"
-                },
 
-                body: JSON.stringify({
-                    categoria,
-                    prioridade,
-                    titulo,
-                    descricao
-                })
-            }
-        );
+    <header class="topbar">
 
-        const texto = await res.text();
+        <div>
+            <h1>Abrir Chamado</h1>
+        </div>
 
-        console.log("STATUS:", res.status);
-        console.log("RESPOSTA:", texto);
+    </header>
 
-        if (!res.ok) {
+    <div class="card">
+        
+<div id="campo-cliente">
 
-            alert(
-                "Erro ao criar chamado.\n\nVeja o console (F12)."
-            );
+    <h3>Cliente</h3>
 
-            return;
-        }
+    <select id="id_cliente">
+        <option value="">Selecione um cliente</option>
+    </select>
 
-        alert("Chamado criado com sucesso!");
+    <br><br>
 
-        window.location.href =
-            "clientes.html";
+</div>
 
-    } catch (err) {
+        <h3>Categoria</h3>
 
-        console.error(err);
+<select id="categoria">
 
-        alert(
-            "Erro de conexão com o servidor."
-        );
-    }
-}
+    <option value="hardware">Hardware</option>
+    <option value="software">Software</option>
+    <option value="redes">Redes</option>
+    <option value="impressoras">Impressoras</option>
+    <option value="servidores">Servidores</option>
+    <option value="suporte">Suporte</option>
+
+</select>
+
+<br><br>
+
+<h3>Prioridade</h3>
+
+<select id="prioridade">
+
+    <option value="alta">Alta</option>
+    <option value="média">Média</option>
+    <option value="baixa">Baixa</option>
+
+</select>
+
+<br><br>
+
+<h3>Título do Problema</h3>
+
+<input
+    id="titulo"
+    type="text"
+    placeholder="Ex: Computador não liga"
+>
+
+<br><br>
+
+<h3>Descrição</h3>
+
+<textarea
+    id="descricao"
+    placeholder="Descreva detalhadamente o problema"
+></textarea>
+
+        <button onclick="abrirChamado()">
+            Criar Chamado
+        </button>
+
+    </div>
+
+</main>
+
+<script src="../js/sidebar.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/abrirChamado.js"></script>
+
+</body>
+</html>
