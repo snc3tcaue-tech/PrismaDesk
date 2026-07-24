@@ -1,103 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
 
-    <title>PrismaDesk - Sistema OS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/frontend/css/chamados.css">
+    <title>PrismaDesk - Chamados</title>
+
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/chamados.css">
+
 </head>
+
+
 <body>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
 
-        <div class="logo">
-            <h2>PrismaDesk</h2>
-            <span>v2.4.1</span>
-        </div>
+    <aside id="sidebar"></aside>
 
-<nav class="menu">
 
-    <a href="dashboard.html">Dashboard</a>
-    <a href="clientes.html">Clientes</a>
-    <a href="chamados.html">Chamados</a>
-    <a href="tecnicos.html">Técnicos</a>
 
-</nav>
-
-        <nav class="menu">
-
-           <nav class="menu">
-
-    <a href="dashboard.html" class="active">
-        📊 Dashboard
-    </a>
-
-    <a href="chamados.html">
-        🛠 Chamados
-    </a>
-
-    <a href="admin-clientes.html">
-    👤 Clientes
-</a>
-
-    <a href="tecnicos.html">
-        👨‍🔧 Técnicos
-    </a>
-
-</nav>
-
-        <div class="bottom-menu">
-
-            <a href="#">
-                ⚙ Configurações
-            </a>
-
-            <a href="login.html">
-    🚪 Sair
-            </a>
-
-        </div>
-
-    </aside>
-
-    <!-- CONTEÚDO -->
     <main class="content">
 
-        <!-- TOPO -->
+
         <header class="topbar">
 
+
             <div>
-                <h1>Chamados Ativos</h1>
-               <p id="total-chamados"></p>
+
+                <h1>
+                    Chamados Ativos
+                </h1>
+
+
+                <p id="total-chamados"></p>
+
             </div>
+
+
 
             <div class="top-actions">
 
-                <input type="text" placeholder="Buscar chamado...">
 
-                <select>
-                    <option>Todos</option>
-                    <option>Aberto</option>
-                    <option>Em andamento</option>
-                    <option>Fechado</option>
+                <input
+                    id="buscaChamado"
+                    type="text"
+                    placeholder="Buscar chamado..."
+                >
+
+
+
+                <select id="filtroStatus">
+
+
+                    <option value="todos">
+                        Todos
+                    </option>
+
+
+                    <option value="aberto">
+                        Aberto
+                    </option>
+
+
+                    <option value="em andamento">
+                        Em andamento
+                    </option>
+
+
+                    <option value="fechado">
+                        Fechado
+                    </option>
+
+
                 </select>
 
-                <button>Novo Chamado</button>
+
+
+                <button onclick="window.location.href='abrirChamado.html'">
+
+                    Novo Chamado
+
+                </button>
+
+
 
             </div>
 
+
         </header>
 
-        <!-- LISTA DE CHAMADOS -->
+
+
+
         <section id="lista-chamados" class="cards">
 
-</section>
+
+        </section>
+
+
+
 
     </main>
 
-<script src="../js/api.js"></script>
-<script src="../js/chamados.js"></script>
+
+
+    <script src="../js/sidebar.js"></script>
+
+    <script src="../js/api.js"></script>
+
+    <script src="../js/chamados.js"></script>
+
+
 </body>
+
 </html>
