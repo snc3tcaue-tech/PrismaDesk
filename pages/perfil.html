@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área do Cliente - PrismaDesk</title>
+  <link rel="stylesheet" href="../css/perfil.css">
+</head>
+<body>
+
+  <div class="content">
+
+    <!-- CABEÇALHO DO CLIENTE -->
+    <div class="topbar">
+      <div>
+        <h1>Área do Cliente</h1>
+        <p>Bem-vindo(a), <strong id="client-name-display">Carregando...</strong></p>
+      </div>
+      <div class="top-actions">
+        <button type="button" class="btn-primary" onclick="abrirModalChamado()">+ Abrir Chamado</button>
+      </div>
+    </div>
+
+    <!-- CARDS DE METRICAS/RESUMO DO CLIENTE -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-title">Minhas Ordens de Serviço</span>
+        <!-- Adicionado ID para o JS atualizar dinamicamente -->
+        <span id="total-os" class="kpi-value text-amber">0</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-title">Meus Chamados</span>
+        <span id="total-chamados" class="kpi-value text-blue">0</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-title">Financeiro Total</span>
+        <!-- Adicionado ID para o valor calculado pelo seu reduce -->
+        <span id="total-financeiro" class="kpi-value text-red">R$ 0,00</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-title">Meus Dados</span>
+        <span class="kpi-value text-purple">OK</span>
+      </div>
+    </div>
+
+    <!-- ABAS DO PERFIL -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-minhas-os">Minhas Ordens de Serviço</button>
+      <button class="tab-btn" data-tab="tab-meus-chamados">Meus Chamados</button>
+      <button class="tab-btn" data-tab="tab-faturas">Financeiro</button>
+      <button class="tab-btn" data-tab="tab-meus-dados">Meus Dados</button>
+    </nav>
+
+    <!-- ABA 1: MINHAS ORDENS DE SERVIÇO -->
+    <section id="tab-minhas-os" class="tab-content active">
+      <div class="card">
+        <div class="card-header">
+          <h3>Acompanhamento de Ordens de Serviço</h3>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Nº OS</th>
+              <th>Equipamento / Serviço</th>
+              <th>Data Abertura</th>
+              <th>Status</th>
+              <th>Valor</th>
+              <th class="text-right">Ação</th>
+            </tr>
+          </thead>
+          <!-- Removidas as tr's fixas. Adicionado ID para o JS preencher -->
+          <tbody id="tbody-os">
+            <tr>
+              <td colspan="6" class="text-center">Buscando ordens de serviço...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ABA 2: MEUS CHAMADOS -->
+    <section id="tab-meus-chamados" class="tab-content">
+      <!-- Mantida a estrutura que seu JS limpa, mas sem os cards falsos de exemplo -->
+      <div class="cards">
+        <p class="text-center">Buscando chamados...</p>
+      </div>
+    </section>
+
+    <!-- ABA 3: FINANCEIRO -->
+    <section id="tab-faturas" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <h3>Faturas e Pagamentos</h3>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Vencimento</th>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th>Status</th>
+              <th class="text-right">Pagamento</th>
+            </tr>
+          </thead>
+          <!-- Removidas as faturas falsas. Adicionado ID para o seu JS injetar dados reais -->
+          <tbody id="tbody-faturas">
+            <tr>
+              <td colspan="6" class="text-center">Buscando faturas...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ABA 4: MEUS DADOS -->
+    <section id="tab-meus-dados" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <h3>Atualizar Meus Dados Cadastrais</h3>
+        </div>
+        <!-- Fechada a tag do formulário que estava cortada no seu envio -->
+        <form id="form-cliente-perfil" class="form-grid">
+          <div class="form-group">
+            <label for="cliente-nome">Nome Completo / Razão Social</label>
+            <input type="text" id="cliente-nome" value="" placeholder="Carregando...">
+          </div>
+
+          <div class="form-group">
+            <label for="cliente-cpf">CPF / CNPJ</label>
+            <!-- Removido valor fixo para não confundir o usuário -->
+            <input type="text" id="cliente-cpf" value="" placeholder="Nenhum documento cadastrado" readonly disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="cliente-email">E-mail Principal</label>
+            <input type="email" id="cliente-email" value="" placeholder="Carregando...">
+          </div>
+
+          <div class="form-group">
+            <label for="cliente-telefone">Telefone / WhatsApp</label>
+            <input type="text" id="cliente-telefone" value="" placeholder="Carregando...">
+          </div>
+
+          <div class="form-group span-2">
+            <label for="cliente-endereco">Endereço Completo</label>
+            <input type="text" id="cliente-endereco" value="" placeholder="Rua, número, bairro, cidade - UF">
+          </div>
+
+          <div class="form-group">
+            <label for="cliente-senha">Nova Senha (deixe em branco se não quiser alterar)</label>
+            <input type="password" id="cliente-senha" placeholder="••••••••">
+          </div>
+
+          <div class="form-group">
+            <label for="cliente-senha-conf">Confirmar Nova Senha</label>
+            <input type="password" id="cliente-senha-conf" placeholder="••••••••">
+          </div>
+
+          <!-- Adicionado o botão de salvar que estava faltando no corte do seu código -->
+          <div class="form-group span-2 text-right">
+            <button type="submit" class="btn-primary">Salvar Alterações</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Inclusão do seu arquivo de script no final da página -->
+   <script src="../js/api.js"></script>
+  <script src="../js/perfil.js"></script>
+</body>
+</html>
