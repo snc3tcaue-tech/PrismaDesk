@@ -9,7 +9,6 @@
 
     <title>PrismaDesk</title>
 
-    <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="/frontend/css/login.css">
 
 </head>
@@ -21,7 +20,10 @@
         <!-- LADO ESQUERDO -->
         <div class="login-info">
 
-            <h1>PrismaDesk</h1>
+            <img src="../assets/prisma.png" class="logo-prisma" alt="PrismaDesk">
+
+<h1>PrismaDesk</h1>
+
 
             <p>
                 Sistema profissional de gerenciamento
@@ -63,18 +65,26 @@
                 >
 
                 <button onclick="login()">
-                    Entrar
-                </button>
+    Entrar
+</button>
 
-                <p class="switch-text">
-                    Não possui conta?
+<!-- <button id="googleLogin" class="google-btn">
+    Continuar com Google
+</button> -->
 
-                    <span onclick="mostrarCadastro()">
-                        Criar conta
-                    </span>
-                </p>
+<!-- O Google usará este ID para renderizar o botão customizado automaticamente -->
+<div id="googleButtonDiv"></div>
+
+
+<p class="switch-text">
+    Não possui conta?
+    <span onclick="mostrarCadastro()">
+        Criar conta
+    </span>
+</p>
 
             </div>
+
 
             <!-- CADASTRO -->
             <div id="cadastroForm"
@@ -129,6 +139,8 @@
     </div>
 
     <script src="../js/auth.js"></script>
+<!-- Script oficial para carregar a biblioteca do Google -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 
 </body>
 </html>
